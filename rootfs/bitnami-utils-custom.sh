@@ -131,7 +131,7 @@ configure_replication() {
 
       echo "==> Creating a data snapshot..."
       mysqldump -u$MARIADB_MASTER_USER ${MARIADB_MASTER_PASSWORD:+-p$MARIADB_MASTER_PASSWORD} -h $MARIADB_MASTER_HOST \
-        --databases $MARIADB_DATABASE --skip-lock-tables --single-transaction --flush-logs --hex-blob --master-data --apply-slave-statements --comments=false | tr -d '\012' | sed -e 's/;/;\n/g' >> /tmp/init_mysql.sql
+        --databases $MARIADB_DATABASE --skip-lock-tables --single-transaction --flush-logs --hex-blob --master-data --apply-slave-statements --comments=false --extended-insert=FALSE' >> /tmp/init_mysql.sql
       echo ""
       ;;
   esac
